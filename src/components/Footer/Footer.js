@@ -1,36 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyledFooter } from './Footer.styled';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { Icons } from '../../Icons/icons';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
-  const [value, setValue] = useState('home');
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const [value, setValue] = useState('');
   const handleOnChange = (event, newValue) => {
-    setValue(newValue);
+    navigate(newValue);
+    // setValue(newValue);
   };
 
+  useEffect(() => {
+    setValue(pathname);
+  }, [pathname]);
   const footerActions = [
     {
       label: '',
-      value: 'home',
+      value: '/dashboard',
       icon: <Icons.HomeIcon />,
     },
     {
-      value: 'transctions',
+      value: '/transactions',
       icon: <Icons.TransactionsIcon />,
     },
     {
-      value: 'add',
+      value: '/add',
       icon: <Icons.AddIcon />,
     },
     {
-      value: 'wallet',
+      value: '/wallet',
       icon: <Icons.WalletIcon />,
     },
     {
       label: '',
-      value: 'user',
+      value: '/userDetails',
       icon: <Icons.UserIcon />,
     },
   ];
@@ -43,7 +50,12 @@ const Footer = () => {
       >
         {footerActions.map(({ label, value, icon }) => {
           return (
-            <BottomNavigationAction value={value} label={label} icon={icon} />
+            <BottomNavigationAction
+              key={value}
+              value={value}
+              label={label}
+              icon={icon}
+            />
           );
         })}
       </BottomNavigation>

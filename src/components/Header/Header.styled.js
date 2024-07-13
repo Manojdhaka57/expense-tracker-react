@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledHeader = styled.div`
-  height: 60px;
+  height: 40px;
   // width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 18px;
+  padding: 0px 16px;
 `;
 
 export const StyledTitle = styled.div`

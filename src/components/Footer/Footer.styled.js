@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledFooter = styled.div`
-  height: 60px;
+  height: 56px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -20,11 +20,11 @@ export const StyledFooter = styled.div`
       width: 18px;
       height: 18px;
     }
-    &.Mui-selected{
-    > svg {
-      width: 24px;
-      height: 24px;
-    }
+    &.Mui-selected {
+      > svg {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 `;
