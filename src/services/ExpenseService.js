@@ -4,7 +4,19 @@ import { API_ENDPOINT } from '../utils';
 class ExpenseService {
   async allExpenses(payload) {
     const response = await HttpClient.post(API_ENDPOINT.ALL_EXPENSES, payload);
-    console.log('@test_', response);
+    return response;
+  }
+
+  async expensesSummary(payload) {
+    const response = await HttpClient.post(
+      API_ENDPOINT.EXPENSES_SUMMARY,
+      payload
+    );
+    return response;
+  }
+
+  async addExpense(payload) {
+    const response = await HttpClient.post(API_ENDPOINT.ADD_EXPENSE, payload);
     return response;
   }
 }

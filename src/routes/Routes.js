@@ -6,6 +6,7 @@ import Layout from '../components/Layout/Layout';
 import { StyledLoading } from '../styled/GlobalStyled';
 import { ProtectedRoute } from './ProtectedRoute';
 import { PublicRoute } from './PublicRoute';
+import AddExpense from '../pages/AddExpense/AddExpense';
 const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
 const Login = lazy(() => import('../pages/Login/Login'));
 const Dashboard = lazy(() => import('../pages/Dashboard/Dashboard'));
@@ -32,6 +33,14 @@ const AppRoutes = () => {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={ROUTES.ADD_EXPENSE}
+            element={
+              <ProtectedRoute>
+                <AddExpense />
               </ProtectedRoute>
             }
           />

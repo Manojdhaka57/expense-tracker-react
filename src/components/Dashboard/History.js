@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icons } from '../../Icons/icons';
+import find from 'lodash/find';
+import { useSelector } from 'react-redux';
 import {
   StyledExpenseIcon,
   StyledIncomeIcon,
   StyledRupeeIcon,
 } from '../../styled/GlobalStyled';
+
 const StyledWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -35,6 +37,10 @@ const StyledExpenseDiv = styled.div`
   color: white;
 `;
 const History = () => {
+  const { expensesSummary } = useSelector((state) => state.expenses);
+  const income = find(expensesSummary, ['_id', 'income'])?.totalExpenses || 0;
+  const expenses =
+    find(expensesSummary, ['_id', 'expense'])?.totalExpenses || 0;
   return (
     <StyledWrapper>
       <StyledDiv>
@@ -43,7 +49,7 @@ const History = () => {
         </StyledExpenseDiv>
         <StyledExpenseDiv>
           <StyledRupeeIcon />
-          1200
+          {income}
         </StyledExpenseDiv>
       </StyledDiv>
       <StyledDiv>
@@ -52,7 +58,7 @@ const History = () => {
         </StyledExpenseDiv>
         <StyledExpenseDiv>
           <StyledRupeeIcon />
-          1200
+          {expenses}
         </StyledExpenseDiv>
       </StyledDiv>
     </StyledWrapper>

@@ -63,11 +63,21 @@ export const StyledTitle = styled.div`
   font-size: 16px;
   font-weight: 500;
   color: #000;
-  text-transform: capitalize;
 `;
 
 export const StyledCard = styled(MuiCard)`
   background-color: #081529;
   box-shadow: 0 6px 10px -4px #00000026;
   border-radius: 10px;
+`;
+export const StyledFormField = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+`;
+export const StyledComponentLabel = styled.div`
+  font-weight: 400;
+  font-size: 14px;
+  color: #929292;
+  text-transform: capitalize;
 `;

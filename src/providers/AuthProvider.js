@@ -16,6 +16,9 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(
     localStorage.getItem(LOCAL_STORAGE_OBJECT.USER) || {}
   );
+  const [username, setUsername] = useState(
+    localStorage.getItem(LOCAL_STORAGE_OBJECT.USER_NAME) || ''
+  );
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const tokenValidation = async (refreshToken, accessToken) => {
@@ -23,8 +26,16 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem(LOCAL_STORAGE_OBJECT.ACCESS_TOKEN, accessToken);
     const decodedToken = decodeToken(accessToken);
     if (accessToken) {
-      localStorage.setItem(LOCAL_STORAGE_OBJECT.USER, decodedToken);
+      localStorage.setItem(
+        LOCAL_STORAGE_OBJECT.USER,
+        JSON.stringify(decodedToken)
+      );
+      localStorage.setItem(
+        LOCAL_STORAGE_OBJECT.USER_NAME,
+        decodeToken?.username
+      );
       setUser(decodedToken);
+      setUsername(decodedToken?.username);
       setErrors({});
       setIsLoading(false);
     } else {
@@ -55,10 +66,12 @@ export const AuthProvider = ({ children }) => {
     AuthService.logout();
     clearLocalStorage();
     setUser({});
+    setUsername('');
     navigate(ROUTES.LOGIN);
   };
   const value = useMemo(
     () => ({
+      username,
       user,
       errors,
       isLoading,

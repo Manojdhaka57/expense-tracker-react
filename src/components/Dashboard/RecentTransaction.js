@@ -53,6 +53,10 @@ const StyledDiv = styled.div`
 const StyledExpenseTitle = styled.div`
   font-size: 14px;
   font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
   &.subTitle {
     font-size: 12px;
     font-weight: 400;
@@ -96,7 +100,7 @@ const RecentTransaction = () => {
   };
   return (
     <StyledWrapper>
-      <StyledTitle>Transactions</StyledTitle>
+      <StyledTitle>Recent transactions</StyledTitle>
       <StyledExpensesDiv>
         {expenses.map((expense) => {
           return renderExpense(expense);

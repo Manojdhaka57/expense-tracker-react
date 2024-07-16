@@ -3,6 +3,9 @@ export const ROUTES = {
   LOGOUT: '/logout',
   DASHBOARD: '/dashboard',
   ADD: '/add',
+  ADD_EXPENSE: '/add/expense',
+  ADD_CATEGORY: '/add/category',
+  ADD_PERSON: '/add/person',
   USER_DETAILS: '/userDetails',
   WALLET: '/wallet',
   TRANSCTION: '/transaction',
@@ -13,7 +16,10 @@ export const API_ENDPOINT = {
   VALIDATE: 'users/validate',
   LOGOUT: 'users/logout',
   REFRESH_TOKEN: 'users/refreshToken',
+  ADD_EXPENSE: '/expense/addExpenses',
   ALL_EXPENSES: 'expense/allExpenses',
+  EXPENSES_SUMMARY: 'expense/expenseSummary',
+  GET_ALL_CATEGORIES: 'category/allCategories',
 };
 
 export const ALERT = {

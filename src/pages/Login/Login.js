@@ -2,8 +2,23 @@ import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { StyledContentWrapper } from '../../styled/GlobalStyled';
-import axios from 'axios';
 import { useAuth } from '../../providers/AuthProvider';
+import styled from 'styled-components';
+import isEmpty from 'lodash/isEmpty';
+
+const StyledContentWrapperLogin = styled(StyledContentWrapper)`
+  justify-content: center;
+  height: 100vh;
+`;
+
+const StyleldTitle = styled.div`
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  & span {
+    color: orange;
+  }
+`;
 
 const Login = () => {
   const auth = useAuth();
@@ -24,7 +39,7 @@ const Login = () => {
       value: formData?.username || '',
     },
     {
-      type: 'textField',
+      type: 'password',
       name: 'password',
       label: 'Password',
       id: 'password',
@@ -34,17 +49,21 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData?.username !== '' && formData?.password !== '') {
+    if (!isEmpty(formData?.username) && !isEmpty(formData?.password)) {
       auth.login(formData);
       return;
     }
     alert('Please enter valid username and password');
   };
   return (
-    <StyledContentWrapper>
+    <StyledContentWrapperLogin>
+      <StyleldTitle>
+        Welcome to <span>Expense Tracker</span>
+      </StyleldTitle>
       {loginFields.map((field) => {
         return (
           <TextField
+            type={field.type}
             key={field.id}
             name={field.name}
             label={field.label}
@@ -56,7 +75,7 @@ const Login = () => {
       <Button variant='contained' onClick={handleSubmit}>
         Login
       </Button>
-    </StyledContentWrapper>
+    </StyledContentWrapperLogin>
   );
 };
 

@@ -6,6 +6,7 @@ import { FaRupeeSign } from 'react-icons/fa';
 import { FaArrowDownLong } from 'react-icons/fa6';
 import { FaArrowUp } from 'react-icons/fa6';
 import { BiX } from 'react-icons/bi';
+import { TbLogout } from 'react-icons/tb';
 export const Icons = {
   HomeIcon: FaHome,
   AddIcon: IoAddCircleSharp,
@@ -16,4 +17,5 @@ export const Icons = {
   ArrowDownIcon: FaArrowDownLong,
   ArrowUpIcon: FaArrowUp,
   CloseIcon: BiX,
+  LogoutIcon: TbLogout,
 };

@@ -8,7 +8,8 @@ export const StyledLayout = styled.div`
 `;
 
 export const StyledContent = styled.div`
-  height: calc(-85px + 100vh);
+  margin-top: ${(props) => (props.isAuthenticated ? '50px' : '0px')};
+  margin-bottom: ${(props) => (props.isAuthenticated ? '56px' : '0px')};
   width: 100%;
 `;
 

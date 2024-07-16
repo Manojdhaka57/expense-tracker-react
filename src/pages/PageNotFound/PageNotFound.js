@@ -7,7 +7,7 @@ export const StyledWrapper = styled(Box)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 18px;
+  padding: 24px;
   height: calc(100% - 120px);
   & p {
     color: #413f3fde;

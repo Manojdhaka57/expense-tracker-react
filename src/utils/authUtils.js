@@ -3,6 +3,7 @@ export const LOCAL_STORAGE_OBJECT = {
   ACCESS_TOKEN: 'accessToken',
   REFRESH_TOKEN: 'refreshToken',
   USER: 'user',
+  USER_NAME: 'username',
 };
 
 export const clearLocalStorage = () => {

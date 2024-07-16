@@ -10,17 +10,21 @@ import { useAuth } from '../../providers/AuthProvider';
 import Loader from '../Loader/Loader';
 import { useSelector } from 'react-redux';
 import AlertComponent from '../AlertComponent/AlertComponent';
+import { isEmpty } from 'lodash';
 
 const Layout = ({ children }) => {
   const auth = useAuth();
   const { showLoader } = useSelector((state) => state.loaders);
+  const isAuthenticated = !isEmpty(auth?.user);
   return (
     <StyledLayout>
       <StyledContentWrapper>
         <AlertComponent />
-        <Header />
-        <StyledContent>{children}</StyledContent>
-        <Footer />
+        {isAuthenticated && <Header />}
+        <StyledContent isAuthenticated={isAuthenticated}>
+          {children}
+        </StyledContent>
+        {isAuthenticated && <Footer />}
       </StyledContentWrapper>
       {(auth.isLoading || showLoader) && <Loader backdrop zIndex={9999} />}
     </StyledLayout>
