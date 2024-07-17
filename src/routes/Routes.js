@@ -6,7 +6,9 @@ import Layout from '../components/Layout/Layout';
 import { StyledLoading } from '../styled/GlobalStyled';
 import { ProtectedRoute } from './ProtectedRoute';
 import { PublicRoute } from './PublicRoute';
-import AddExpense from '../pages/AddExpense/AddExpense';
+import AddPage from '../pages/AddPage/AddPage';
+const AddCategory = lazy(() => import('../pages/AddCategory/AddCategory'));
+const AddExpense = lazy(() => import('../pages/AddExpense/AddExpense'));
 const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
 const Login = lazy(() => import('../pages/Login/Login'));
 const Dashboard = lazy(() => import('../pages/Dashboard/Dashboard'));
@@ -37,10 +39,26 @@ const AppRoutes = () => {
             }
           />
           <Route
+            path={ROUTES.ADD}
+            element={
+              <ProtectedRoute>
+                <AddPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path={ROUTES.ADD_EXPENSE}
             element={
               <ProtectedRoute>
                 <AddExpense />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={ROUTES.ADD_CATEGORY}
+            element={
+              <ProtectedRoute>
+                <AddCategory />
               </ProtectedRoute>
             }
           />

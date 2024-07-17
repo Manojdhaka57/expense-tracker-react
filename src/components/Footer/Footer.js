@@ -28,7 +28,7 @@ const Footer = () => {
       icon: <Icons.TransactionsIcon />,
     },
     {
-      value: '/add/expense',
+      value: '/add',
       icon: <Icons.AddIcon />,
     },
     {

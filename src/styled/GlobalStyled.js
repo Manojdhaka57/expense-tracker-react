@@ -69,6 +69,7 @@ export const StyledCard = styled(MuiCard)`
   background-color: #081529;
   box-shadow: 0 6px 10px -4px #00000026;
   border-radius: 10px;
+  padding: 18px;
 `;
 export const StyledFormField = styled.div`
   display: flex;

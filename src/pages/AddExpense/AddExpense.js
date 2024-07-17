@@ -14,7 +14,6 @@ const AddExpense = () => {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.category);
   const [formData, setFormData] = useState({});
-  console.log('@test_formData', formData);
   useEffect(() => {
     dispatch(getAllCategory());
   }, []);
@@ -42,7 +41,6 @@ const AddExpense = () => {
 
   const handleOnBlur = (event) => {
     const { name, value } = event.target;
-    console.log(name, value);
     if (value) {
       setFormData((prevState) => ({
         ...prevState,
@@ -56,7 +54,7 @@ const AddExpense = () => {
     if (
       [content, date, categoryId, amount].every((value) => value?.length > 0)
     ) {
-      dispatch(addExpense(formData));
+      dispatch(addExpense({ ...formData, date: new Date(formData.date) }));
       setFormData({});
     } else {
       dispatch(

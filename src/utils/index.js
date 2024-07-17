@@ -20,6 +20,7 @@ export const API_ENDPOINT = {
   ALL_EXPENSES: 'expense/allExpenses',
   EXPENSES_SUMMARY: 'expense/expenseSummary',
   GET_ALL_CATEGORIES: 'category/allCategories',
+  ADD_CATEGORY: 'category/addCategory',
 };
 
 export const ALERT = {

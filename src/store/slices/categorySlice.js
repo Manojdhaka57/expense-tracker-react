@@ -17,4 +17,5 @@ export default categorySlice.reducer;
 
 export const categoryActionTypes = {
   GET_ALL_CATEGORIES: 'category/GET_ALL_CATEGORIES',
+  ADD_CATEGORY: 'category/ADD_CATEGORY',
 };

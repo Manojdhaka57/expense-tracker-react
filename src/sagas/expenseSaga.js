@@ -64,7 +64,7 @@ export function* addExpenseHandler(action) {
           show: true,
           type: apiResponseStatus.SUCCESS,
           message: response?.data?.message || '',
-          messageId: 'something went wrong please try again',
+          messageId: 'expense added successfully',
         })
       );
     } else {

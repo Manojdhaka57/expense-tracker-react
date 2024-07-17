@@ -8,8 +8,8 @@ export const StyledLayout = styled.div`
 `;
 
 export const StyledContent = styled.div`
-  margin-top: ${(props) => (props.isAuthenticated ? '50px' : '0px')};
-  margin-bottom: ${(props) => (props.isAuthenticated ? '56px' : '0px')};
+  margin-top: ${(props) => (props.$isauthenticated ? '50px' : '0px')};
+  margin-bottom: ${(props) => (props.$isauthenticated ? '56px' : '0px')};
   width: 100%;
 `;
 

@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
       <StyledContentWrapper>
         <AlertComponent />
         {isAuthenticated && <Header />}
-        <StyledContent isAuthenticated={isAuthenticated}>
+        <StyledContent $isauthenticated={isAuthenticated}>
           {children}
         </StyledContent>
         {isAuthenticated && <Footer />}

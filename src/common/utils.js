@@ -54,7 +54,6 @@ export const renderDateTimePicker = (field) => {
 };
 
 export const renderField = (field) => {
-  console.log('@testing...', field.fieldType);
   if (field.fieldType === 'textField') {
     return renderTextField(field);
   } else if (field.fieldType === 'dropdown') {
