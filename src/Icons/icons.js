@@ -1,12 +1,14 @@
 import { FaHome, FaWallet } from 'react-icons/fa';
 import { IoAddCircleSharp } from 'react-icons/io5';
-import { BiSolidUser } from 'react-icons/bi';
+import { BiDotsVerticalRounded, BiSolidUser } from 'react-icons/bi';
 import { BsFillFileBarGraphFill } from 'react-icons/bs';
 import { FaRupeeSign } from 'react-icons/fa';
 import { FaArrowDownLong } from 'react-icons/fa6';
 import { FaArrowUp } from 'react-icons/fa6';
 import { BiX } from 'react-icons/bi';
 import { TbLogout } from 'react-icons/tb';
+import { TiEdit } from 'react-icons/ti';
+import { MdDelete } from 'react-icons/md';
 export const Icons = {
   HomeIcon: FaHome,
   AddIcon: IoAddCircleSharp,
@@ -18,4 +20,7 @@ export const Icons = {
   ArrowUpIcon: FaArrowUp,
   CloseIcon: BiX,
   LogoutIcon: TbLogout,
+  VerticalDotsIcon: BiDotsVerticalRounded,
+  EditIcon: <TiEdit />,
+  DeleteIcon: <MdDelete />,
 };

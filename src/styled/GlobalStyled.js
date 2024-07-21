@@ -82,3 +82,13 @@ export const StyledComponentLabel = styled.div`
   color: #929292;
   text-transform: capitalize;
 `;
+
+export const StyledUserIcon = styled.div`
+  height: 100%;
+  padding-left: 2px;
+  display: flex;
+  & svg {
+    height: 24px;
+    width: 24px;
+  }
+`;

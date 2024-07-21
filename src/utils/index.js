@@ -8,7 +8,7 @@ export const ROUTES = {
   ADD_PERSON: '/add/person',
   USER_DETAILS: '/userDetails',
   WALLET: '/wallet',
-  TRANSCTION: '/transaction',
+  TRANSCTION: '/transactions',
 };
 
 export const API_ENDPOINT = {
@@ -21,6 +21,10 @@ export const API_ENDPOINT = {
   EXPENSES_SUMMARY: 'expense/expenseSummary',
   GET_ALL_CATEGORIES: 'category/allCategories',
   ADD_CATEGORY: 'category/addCategory',
+  ADD_PERSON: 'person/addPerson',
+  ALL_PERSONS: 'person/all/persons',
+  EDIT_PERSON: 'person',
+  DELETE_PERSON: 'person',
 };
 
 export const ALERT = {

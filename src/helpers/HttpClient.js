@@ -67,18 +67,19 @@ const HttpClient = (function () {
       return response;
     }
 
-    async patch(url, payload = {}, headers = {}) {
-      const response = await axiosInstance.put(url, payload, {
+    async patch(url, payload = {}, params = {}, headers = {}) {
+      const response = await axiosInstance.patch(url, payload, {
         headers,
+        params,
       });
       return response;
     }
 
-    async delete(url, payload = {}, headers = {}) {
+    async delete(url, payload = {}, params = {}, headers = {}) {
       const response = await axiosInstance.delete(
         url,
         { data: payload },
-        { headers }
+        { headers, params }
       );
       return response;
     }

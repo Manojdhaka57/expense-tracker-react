@@ -1,13 +1,13 @@
 import { call, all, spawn, fork } from 'redux-saga/effects';
 import expenseSaga from './expenseSaga';
 import categorySaga from './categorySaga';
+import personSaga from './personSaga';
 
 export default function* rootSaga() {
-  const sagas = [expenseSaga, categorySaga];
+  const sagas = [expenseSaga, categorySaga, personSaga];
   yield all(sagas.map((saga) => fork(saga)));
   // yield all(
   //   sagas.map((saga) => {
-  //     console.log("@saga")
   //     spawn(function* () {
   //       while (true) {
   //         try {
