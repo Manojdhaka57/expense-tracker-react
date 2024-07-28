@@ -1,3 +1,5 @@
+import { format, isToday, isYesterday } from 'date-fns';
+
 export const ROUTES = {
   LOGIN: '/login',
   LOGOUT: '/logout',
@@ -9,6 +11,7 @@ export const ROUTES = {
   USER_DETAILS: '/userDetails',
   WALLET: '/wallet',
   TRANSCTION: '/transactions',
+  PERSON_TRANSACTION: '/transactions/:personId',
 };
 
 export const API_ENDPOINT = {
@@ -25,8 +28,33 @@ export const API_ENDPOINT = {
   ALL_PERSONS: 'person/all/persons',
   EDIT_PERSON: 'person',
   DELETE_PERSON: 'person',
+  ADD_TRANSACTION: 'transaction/addTransaction',
+  TRANSACTION_DETAILS: 'transaction',
+  EDIT_TRANSACION: 'transaction',
+  DELETE_TRANSACTION: 'transaction',
+  PERSON_TRANSACTIONS_HISTORY: 'transaction/personTransactionsHistory',
+  PERSON_TRANSACTIONS_SUMMARY: 'transaction/personTransactionsSummary',
+  USER_TRANSACTION_SUMMARY: 'transaction/userTransactionsSummary',
 };
 
 export const ALERT = {
   EXPIRATION_TIME: 3000,
+};
+
+export const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  if (!date) {
+    return '';
+  }
+  if (isToday(date)) {
+    // Format for today
+    return format(date, 'h:mm aa');
+  } else if (isYesterday(date)) {
+    // Format for yesterday
+    return 'Yesterday ' + format(date, 'h:mm aa');
+  } else {
+    // Format for before yesterday
+    const formattedDate = format(date, "d MMMM yyyy 'at' h:mm aa");
+    return formattedDate;
+  }
 };

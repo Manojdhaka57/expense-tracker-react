@@ -22,6 +22,7 @@ export const StyledDiv = styled.div`
 `;
 
 export const StyledPersonInfoDiv = styled.div`
+  cursor: pointer;
   display: flex;
   gap: 5px;
   flex-direction: row;

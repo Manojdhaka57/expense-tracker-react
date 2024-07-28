@@ -7,3 +7,8 @@ export const REGEXP = {
   decimalValues: /^\d*\.?\d*$/,
   onlyNumber: /^([0-9]*)$/,
 };
+
+export const EVENT_BUS = {
+  UPDATE_HEADER_BACK_BUTTON: 'UPDATE_HEADER_BACK_BUTTON',
+  UPDATE_HEADER_EVENT: 'UPDATE_HEADER_EVENT',
+};

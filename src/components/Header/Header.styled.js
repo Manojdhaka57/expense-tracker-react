@@ -16,6 +16,13 @@ export const StyledHeader = styled.div`
   z-index: 999;
 `;
 
+export const StyledHeaderTitleBlock = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+`;
+
 export const StyledTitle = styled.div`
   font-weight: 500;
   font-size: 16px;

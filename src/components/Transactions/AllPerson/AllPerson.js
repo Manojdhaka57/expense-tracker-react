@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyledActions,
   StyledDiv,
@@ -20,16 +20,32 @@ import { alertActions } from '../../../store/slices/alertSlice';
 import { apiResponseStatus } from '../../../config/apiConfig';
 import { useDispatch } from 'react-redux';
 import { deletePerson, editPerson } from '../../../actions/personActions';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { emit } from '../../../hooks/useEventBus';
+import { EVENT_BUS } from '../../../config/appConfig';
 
 const AllPerson = ({ allPersons = [] }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [open, setOpen] = useState(false);
   const [selectedAction, setSelectedAction] = useState('');
   const [formData, setFormData] = useState({});
   const [selectedPersonId, setSelectedPersonId] = useState('');
 
-  const handleDeletePerson = (personId) => {};
-  const handleEditPerson = (personId) => {};
+  useEffect(() => {
+    emit({
+      type: EVENT_BUS.UPDATE_HEADER_EVENT,
+      title: 'All Persons',
+    });
+    return () => {
+      emit({
+        type: EVENT_BUS.UPDATE_HEADER_EVENT,
+        title: '',
+      });
+    };
+  }, []);
+
   const handleOnActionClick = (event) => {
     event.preventDefault();
     setOpen(true);
@@ -42,10 +58,23 @@ const AllPerson = ({ allPersons = [] }) => {
     EDIT: 'Edit',
     DELETE: 'Delete',
   };
+
+  const handleOnPersonDetails = (event) => {
+    const { personId } = event.currentTarget.dataset;
+    navigate(`/transactions/${personId}`, {
+      replace: true,
+      state: {
+        location,
+      },
+    });
+  };
   const renderPersonDetail = (person) => {
     return (
       <StyledDiv key={person?._id}>
-        <StyledPersonInfoDiv>
+        <StyledPersonInfoDiv
+          onClick={handleOnPersonDetails}
+          data-person-id={person?._id}
+        >
           <StyledUserIcon>
             <Avatar sx={{ width: 24, height: 24 }}>
               {person?.name?.charAt(0).toUpperCase()}

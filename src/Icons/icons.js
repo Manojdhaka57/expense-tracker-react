@@ -9,6 +9,7 @@ import { BiX } from 'react-icons/bi';
 import { TbLogout } from 'react-icons/tb';
 import { TiEdit } from 'react-icons/ti';
 import { MdDelete } from 'react-icons/md';
+import { IoArrowBack } from 'react-icons/io5';
 export const Icons = {
   HomeIcon: FaHome,
   AddIcon: IoAddCircleSharp,
@@ -23,4 +24,5 @@ export const Icons = {
   VerticalDotsIcon: BiDotsVerticalRounded,
   EditIcon: <TiEdit />,
   DeleteIcon: <MdDelete />,
+  BackButtonIcon: IoArrowBack,
 };

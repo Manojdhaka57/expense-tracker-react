@@ -7,6 +7,9 @@ import { StyledLoading } from '../styled/GlobalStyled';
 import { ProtectedRoute } from './ProtectedRoute';
 import { PublicRoute } from './PublicRoute';
 import AddPage from '../pages/AddPage/AddPage';
+const PersonTransaction = lazy(
+  () => import('../pages/PersonTransactions/PersonTransaction')
+);
 const Transactions = lazy(() => import('../pages/Transactions/Transactions'));
 const AddPerson = lazy(() => import('../pages/AddPerson/AddPerson'));
 const AddCategory = lazy(() => import('../pages/AddCategory/AddCategory'));
@@ -78,6 +81,14 @@ const AppRoutes = () => {
             element={
               <ProtectedRoute>
                 <Transactions />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={ROUTES.PERSON_TRANSACTION}
+            element={
+              <ProtectedRoute>
+                <PersonTransaction />
               </ProtectedRoute>
             }
           />
