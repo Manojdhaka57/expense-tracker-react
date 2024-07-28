@@ -81,7 +81,7 @@ const TransactionHistory = () => {
     if (selectedAction === 'EDIT' || selectedAction === 'ADD') {
       const { date, amount, transactionType, description } = formData;
       if (
-        [date, amount?.toString(), transactionType, description].every(
+        [date, amount?.toString(), transactionType].every(
           (value) => value?.length > 0
         )
       ) {
