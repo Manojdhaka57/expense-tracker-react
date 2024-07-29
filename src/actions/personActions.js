@@ -19,6 +19,11 @@ export const deletePerson = (payload) => ({
   payload,
 });
 
+export const getPersonDetails = (payload) => ({
+  type: personActionTypes.GET_PERSON_DETAILS,
+  payload,
+});
+
 export const userTransactionsSummary = (payload) => ({
   type: personActionTypes.USER_TRANSACTION_SUMMARY,
   payload,

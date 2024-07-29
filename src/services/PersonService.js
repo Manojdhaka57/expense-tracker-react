@@ -25,6 +25,13 @@ class PersonService {
     return response;
   }
 
+  async getPersonDetails(payload) {
+    const response = await HttpClient.get(
+      `${API_ENDPOINT.GET_PERSON_DETAILS}/${payload.personId}`
+    );
+    return response;
+  }
+
   async userTransactionsSummary(payload) {
     const response = await HttpClient.post(
       API_ENDPOINT.USER_TRANSACTION_SUMMARY,

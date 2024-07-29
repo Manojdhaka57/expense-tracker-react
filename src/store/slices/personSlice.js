@@ -8,6 +8,7 @@ const personSlice = createSlice({
     personTransactionsSummary: [],
     personTransactionsHistory: [],
     transactionDetails: {},
+    personDetails: {},
   },
   reducers: {
     updateAllPersons: (state, action) => {
@@ -25,6 +26,9 @@ const personSlice = createSlice({
     updateTransactionDetails: (state, action) => {
       state.transactionDetails = action.payload;
     },
+    updatePersonDetails: (state, action) => {
+      state.personDetails = action.payload;
+    },
   },
 });
 
@@ -34,6 +38,7 @@ export const personActions = personSlice.actions;
 export const personActionTypes = {
   ADD_PERSON: 'person/ADD_PERSON',
   GET_ALL_PERSONS: 'person/GET_ALL_PERSONS',
+  GET_PERSON_DETAILS: 'person/GET_PERSON_DETAILS',
   EDIT_PERSON: 'person/EDIT_PERSON',
   DELETE_PERSON: 'person/DELETE_PERSON',
   USER_TRANSACTION_SUMMARY: 'person/USER_TRANSACTION_SUMMARY',

@@ -108,6 +108,35 @@ export function* editPersonHandler(action) {
   }
 }
 
+export function* getPersonDetailsHandler(action) {
+  try {
+    const response = yield call(PersonService.getPersonDetails, action.payload);
+    if (response.data.statusCode === 200) {
+      yield put(personActions.updatePersonDetails(response.data.data));
+    } else {
+      yield put(personActions.updatePersonDetails({}));
+      yield put(
+        alertActions.showAlert({
+          show: true,
+          type: apiResponseStatus.ERROR,
+          message: response?.data?.message || '',
+          messageId: 'something went wrong please try again',
+        })
+      );
+    }
+  } catch (error) {
+    yield put(
+      alertActions.showAlert({
+        show: true,
+        type: apiResponseStatus.ERROR,
+        message: error.response?.data?.message || '',
+        messageId: 'something went wrong please try again',
+      })
+    );
+  } finally {
+  }
+}
+
 export function* deletePersonHandler(action) {
   try {
     yield put(loaderActions.showLoader());
@@ -415,5 +444,9 @@ export default function* personSaga() {
   yield takeLatest(
     personActionTypes.DELETE_TRANSACTION,
     deleteTransactionHandler
+  );
+  yield takeLatest(
+    personActionTypes.GET_PERSON_DETAILS,
+    getPersonDetailsHandler
   );
 }

@@ -28,6 +28,7 @@ export const API_ENDPOINT = {
   ALL_PERSONS: 'person/all/persons',
   EDIT_PERSON: 'person',
   DELETE_PERSON: 'person',
+  GET_PERSON_DETAILS: 'person',
   ADD_TRANSACTION: 'transaction/addTransaction',
   TRANSACTION_DETAILS: 'transaction',
   EDIT_TRANSACION: 'transaction',

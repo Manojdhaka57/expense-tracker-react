@@ -1,5 +1,5 @@
 import find from 'lodash/find';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   StyledExpenseIcon,
@@ -38,10 +38,28 @@ const StyledExpenseDiv = styled.div`
 `;
 const TransactionSummary = () => {
   const { personTransactionsSummary } = useSelector((state) => state.person);
-  const send =
-    find(personTransactionsSummary, ['_id', 'send'])?.totalTransaction || 0;
-  const received =
-    find(personTransactionsSummary, ['_id', 'received'])?.totalTransaction || 0;
+  let interval = 2000;
+  const [{ send, received }, setSummaryState] = useState({
+    send: 0,
+    received: 0,
+  });
+  useEffect(() => {
+    personTransactionsSummary.forEach((transaction) => {
+      let startValue = 0;
+      let endValue = parseInt(transaction.totalTransaction);
+      let duration = Math.floor(interval / endValue);
+      let counter = setInterval(() => {
+        startValue = startValue + 10 > endValue ? endValue : startValue + 10;
+        setSummaryState((prevState) => ({
+          ...prevState,
+          [transaction._id]: startValue,
+        }));
+        if (startValue === endValue) {
+          clearInterval(counter);
+        }
+      }, duration);
+    });
+  }, [personTransactionsSummary]);
   return (
     <StyledWrapper>
       <StyledDiv>
