@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import Box from '@mui/material/Box';
 import MuiCard from '@mui/material/Card';
 import { Icons } from '../Icons/icons';
@@ -13,6 +13,12 @@ export default createGlobalStyle`
   }
 `;
 
+export const cardAnimation = keyframes`
+  0% {opacity: 0; scale: 1;}
+  20% {opacity: 0.2; scale: 0.95; }
+  50% {opacity: 0.5; scale: 1.05; }
+  100% {opacity: 1;  scale:1;}
+`;
 export const StyledContentWrapper = styled(Box).attrs({
   sx: {
     p: [2],

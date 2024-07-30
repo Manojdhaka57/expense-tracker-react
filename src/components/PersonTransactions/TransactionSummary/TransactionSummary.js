@@ -1,4 +1,3 @@
-import find from 'lodash/find';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -47,9 +46,10 @@ const TransactionSummary = () => {
     personTransactionsSummary.forEach((transaction) => {
       let startValue = 0;
       let endValue = parseInt(transaction.totalTransaction);
-      let duration = Math.floor(interval / endValue);
+      let duration = Math.floor((interval * 1000) / endValue);
       let counter = setInterval(() => {
-        startValue = startValue + 10 > endValue ? endValue : startValue + 10;
+        startValue =
+          startValue + 1000 > endValue ? endValue : startValue + 1000;
         setSummaryState((prevState) => ({
           ...prevState,
           [transaction._id]: startValue,

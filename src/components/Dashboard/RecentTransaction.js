@@ -3,11 +3,11 @@ import {
   StyledCard,
   StyledRupeeIcon,
   StyledTitle,
+  cardAnimation,
 } from '../../styled/GlobalStyled';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { format, isToday, isYesterday } from 'date-fns';
-import { DATE_FORMAT } from '../../config/appConfig';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -31,6 +31,8 @@ const StyledExpenseDiv = styled(StyledCard)`
     rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  animation: ${cardAnimation} linear;
+  animation-duration: 2s;
 `;
 
 const StyledDiv = styled.div`

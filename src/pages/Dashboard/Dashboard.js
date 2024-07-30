@@ -7,9 +7,24 @@ import {
 } from '../../actions/expenseActions';
 import History from '../../components/Dashboard/History';
 import RecentTransaction from '../../components/Dashboard/RecentTransaction';
+import { emit } from '../../hooks/useEventBus';
+import { EVENT_BUS } from '../../config/appConfig';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    emit({
+      type: EVENT_BUS.UPDATE_HEADER_EVENT,
+      title: 'Dashboard',
+    });
+    return () => {
+      emit({
+        type: EVENT_BUS.UPDATE_HEADER_EVENT,
+        title: '',
+      });
+    };
+  });
   useEffect(() => {
     dispatch(getAllExpenses({}));
     dispatch(getExpensesSummary({}));

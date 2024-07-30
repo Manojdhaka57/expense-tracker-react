@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyledCard, StyledContentWrapper } from '../../styled/GlobalStyled';
 import styled from 'styled-components';
 import { Icons } from '../../Icons/icons';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { fields } from './constants';
+import { emit } from '../../hooks/useEventBus';
+import { EVENT_BUS } from '../../config/appConfig';
 
 const StyledLabel = styled.div`
   font-weight: 600;
@@ -33,6 +35,19 @@ const StyledDiv = styled.div`
 const AddPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    emit({
+      type: EVENT_BUS.UPDATE_HEADER_EVENT,
+      title: 'Add Page',
+    });
+    return () => {
+      emit({
+        type: EVENT_BUS.UPDATE_HEADER_EVENT,
+        title: '',
+      });
+    };
+  });
 
   const handleOnClick = (event) => {
     const { path } = event.currentTarget.dataset;

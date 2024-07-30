@@ -10,7 +10,7 @@ import { useAuth } from '../../providers/AuthProvider';
 import Loader from '../Loader/Loader';
 import { useSelector } from 'react-redux';
 import AlertComponent from '../AlertComponent/AlertComponent';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 
 const Layout = ({ children }) => {
   const auth = useAuth();

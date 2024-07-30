@@ -5,7 +5,7 @@ import {
   decodeToken,
 } from '../utils/authUtils';
 import AuthService from '../services/AuthService';
-import { pick } from 'lodash';
+import pick from 'lodash/pick';
 import { ROUTES } from '../utils';
 import { useNavigate } from 'react-router-dom';
 
@@ -24,18 +24,14 @@ export const AuthProvider = ({ children }) => {
   const tokenValidation = async (refreshToken, accessToken) => {
     localStorage.setItem(LOCAL_STORAGE_OBJECT.REFRESH_TOKEN, refreshToken);
     localStorage.setItem(LOCAL_STORAGE_OBJECT.ACCESS_TOKEN, accessToken);
-    const decodedToken = decodeToken(accessToken);
+    const decodedToken = await decodeToken(accessToken);
     if (accessToken) {
       localStorage.setItem(
         LOCAL_STORAGE_OBJECT.USER,
         JSON.stringify(decodedToken)
       );
-      localStorage.setItem(
-        LOCAL_STORAGE_OBJECT.USER_NAME,
-        decodeToken?.username
-      );
       setUser(decodedToken);
-      setUsername(decodedToken?.username);
+      setUsername(decodedToken.username);
       setErrors({});
       setIsLoading(false);
     } else {

@@ -14,9 +14,4 @@ export const fields = [
     label: 'Add Person',
     path: '/add/person',
   },
-  {
-    id: 'add_transction',
-    label: 'Add Transaction',
-    path: '/add/transaction',
-  },
 ];

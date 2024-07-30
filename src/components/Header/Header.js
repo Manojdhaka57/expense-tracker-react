@@ -11,8 +11,12 @@ import { useAuth } from '../../providers/AuthProvider';
 import Logout from '../Logout/Logout';
 import useEventBus from '../../hooks/useEventBus';
 import { EVENT_BUS } from '../../config/appConfig';
+import { LOCAL_STORAGE_OBJECT, decodeToken } from '../../utils/authUtils';
 const Header = () => {
-  const { username } = useAuth();
+  const { username } = decodeToken(
+    localStorage.getItem(LOCAL_STORAGE_OBJECT.ACCESS_TOKEN)
+  );
+  console.log(username);
   const [title, setTitle] = useState('Expense Tracker');
   const [backButtonComponent, setBackButtonComponent] = useState(null);
 
