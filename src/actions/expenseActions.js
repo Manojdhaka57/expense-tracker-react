@@ -14,3 +14,8 @@ export const addExpense = (payload) => ({
   type: expenseActionTypes.ADD_EXPENSE,
   payload,
 });
+
+export const getCategoryWiseExpense = (payload) => ({
+  type: expenseActionTypes.GET_CATEGORY_WISE_EXPENSE,
+  payload,
+});

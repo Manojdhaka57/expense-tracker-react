@@ -36,9 +36,17 @@ export function* getExpensesSumaryHandler(action) {
     yield put(loaderActions.showLoader());
     const response = yield call(ExpenseService.expensesSummary, action.payload);
     if (response.data.statusCode === 200) {
-      yield put(expenseActions.setExpensesSummary(response.data?.data));
+      yield put(
+        expenseActions.setExpensesSummary(response.data?.data?.expenses)
+      );
+      yield put(
+        expenseActions.setMonthWiseExpenses(
+          response.data?.data?.monthWiseExpenses
+        )
+      );
     } else {
       yield put(expenseActions.setExpensesSummary([]));
+      yield put(expenseActions.setMonthWiseExpenses([]));
     }
   } catch (error) {
     yield put(
@@ -91,6 +99,32 @@ export function* addExpenseHandler(action) {
   }
 }
 
+export function* getCategoryWiseExpenseHandler(action) {
+  try {
+    yield put(loaderActions.showLoader());
+    const response = yield call(
+      ExpenseService.getCategoryWiseExpense,
+      action.payload
+    );
+    if (response.data.statusCode === 200) {
+      yield put(expenseActions.setCategoryWiseExpenses(response.data?.data));
+    } else {
+      yield put(expenseActions.setCategoryWiseExpenses([]));
+    }
+  } catch (error) {
+    yield put(
+      alertActions.showAlert({
+        show: true,
+        type: apiResponseStatus.ERROR,
+        message: error.response?.data?.message || '',
+        messageId: 'something went wrong please try again',
+      })
+    );
+  } finally {
+    yield put(loaderActions.hideLoader());
+  }
+}
+
 export default function* expenseSaga() {
   yield takeLatest(expenseActionTypes.GET_ALL_EXPENSES, getAllExpensesHandler);
   yield takeLatest(
@@ -98,4 +132,8 @@ export default function* expenseSaga() {
     getExpensesSumaryHandler
   );
   yield takeLatest(expenseActionTypes.ADD_EXPENSE, addExpenseHandler);
+  yield takeLatest(
+    expenseActionTypes.GET_CATEGORY_WISE_EXPENSE,
+    getCategoryWiseExpenseHandler
+  );
 }

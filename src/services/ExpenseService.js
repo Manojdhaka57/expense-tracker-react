@@ -19,5 +19,13 @@ class ExpenseService {
     const response = await HttpClient.post(API_ENDPOINT.ADD_EXPENSE, payload);
     return response;
   }
+
+  async getCategoryWiseExpense(payload) {
+    const response = await HttpClient.post(
+      API_ENDPOINT.GET_CATEGORY_WISE_EXPENSE,
+      payload
+    );
+    return response;
+  }
 }
 export default new ExpenseService();

@@ -22,6 +22,7 @@ export const API_ENDPOINT = {
   ADD_EXPENSE: '/expense/addExpenses',
   ALL_EXPENSES: 'expense/allExpenses',
   EXPENSES_SUMMARY: 'expense/expenseSummary',
+  GET_CATEGORY_WISE_EXPENSE: 'expense/categoryWiseExpense',
   GET_ALL_CATEGORIES: 'category/allCategories',
   ADD_CATEGORY: 'category/addCategory',
   ADD_PERSON: 'person/addPerson',

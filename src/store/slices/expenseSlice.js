@@ -5,6 +5,8 @@ const expenseSlice = createSlice({
   initialState: {
     expenses: [],
     expensesSummary: [],
+    categoryWiseExpense: [],
+    monthWiseExpenses: [],
   },
   reducers: {
     recentExpenses: (state, action) => {
@@ -12,6 +14,12 @@ const expenseSlice = createSlice({
     },
     setExpensesSummary: (state, action) => {
       state.expensesSummary = action.payload;
+    },
+    setCategoryWiseExpenses: (state, action) => {
+      state.categoryWiseExpense = action.payload;
+    },
+    setMonthWiseExpenses: (state, action) => {
+      state.monthWiseExpenses = action.payload;
     },
   },
 });
@@ -23,4 +31,5 @@ export const expenseActionTypes = {
   GET_ALL_EXPENSES: 'expenses/GET_ALL_EXPENSES',
   GET_EXPENSES_SUMMARY: 'expense/GET_EXPENSES_SUMMARY',
   ADD_EXPENSE: 'expense/ADD_EXPENSE',
+  GET_CATEGORY_WISE_EXPENSE: 'expense/GET_CATEGORY_WISE_EXPENSE',
 };

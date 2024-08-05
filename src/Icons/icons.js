@@ -10,6 +10,7 @@ import { TbLogout } from 'react-icons/tb';
 import { TiEdit } from 'react-icons/ti';
 import { MdDelete } from 'react-icons/md';
 import { IoArrowBack } from 'react-icons/io5';
+import { RiFilter3Fill } from 'react-icons/ri';
 export const Icons = {
   HomeIcon: FaHome,
   AddIcon: IoAddCircleSharp,
@@ -25,4 +26,5 @@ export const Icons = {
   EditIcon: <TiEdit />,
   DeleteIcon: <MdDelete />,
   BackButtonIcon: IoArrowBack,
+  FilterIcon: RiFilter3Fill,
 };

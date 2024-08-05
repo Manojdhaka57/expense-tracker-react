@@ -16,7 +16,6 @@ const Header = () => {
   const { username } = decodeToken(
     localStorage.getItem(LOCAL_STORAGE_OBJECT.ACCESS_TOKEN)
   );
-  console.log(username);
   const [title, setTitle] = useState('Expense Tracker');
   const [backButtonComponent, setBackButtonComponent] = useState(null);
 
