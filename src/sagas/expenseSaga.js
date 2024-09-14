@@ -14,8 +14,18 @@ export function* getAllExpensesHandler(action) {
     const response = yield call(ExpenseService.allExpenses, action.payload);
     if (response.data.statusCode === 200) {
       yield put(expenseActions.recentExpenses(response.data?.data?.expenses));
+      yield put(
+        expenseActions.updatePagination(response.data?.data?.pagination)
+      );
     } else {
       yield put(expenseActions.recentExpenses([]));
+      yield put(
+        expenseActions.updatePagination({
+          page: 0,
+          size: 10,
+          totalRecords: 0,
+        })
+      );
     }
   } catch (error) {
     yield put(

@@ -7,6 +7,11 @@ const expenseSlice = createSlice({
     expensesSummary: [],
     categoryWiseExpense: [],
     monthWiseExpenses: [],
+    pagination: {
+      page: 0,
+      size: 10,
+      totalRecords: 0,
+    },
   },
   reducers: {
     recentExpenses: (state, action) => {
@@ -20,6 +25,9 @@ const expenseSlice = createSlice({
     },
     setMonthWiseExpenses: (state, action) => {
       state.monthWiseExpenses = action.payload;
+    },
+    updatePagination: (state, action) => {
+      state.pagination = action.payload;
     },
   },
 });

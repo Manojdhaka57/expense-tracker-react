@@ -2,6 +2,9 @@ import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import Box from '@mui/material/Box';
 import MuiCard from '@mui/material/Card';
 import { Icons } from '../Icons/icons';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Chip from '@mui/material/Chip';
 export default createGlobalStyle`
   html {
     font-size: 16px;
@@ -96,5 +99,31 @@ export const StyledUserIcon = styled.div`
   & svg {
     height: 24px;
     width: 24px;
+  }
+`;
+
+export const StyledButtonGroup = styled(ButtonGroup)`
+  display: flex;
+  gap: 12px;
+`;
+
+export const StyledButton = styled(Button)`
+  &.MuiButton-root {
+    border: 1px solid #ff663a !important;
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #ff663a !important;
+    padding: 5px 10px;
+  }
+`;
+
+export const StyledChip = styled(Chip)`
+  &.MuiChip-root {
+    width: min-content;
+    border-radius: 10px;
+    background-color: #3a88ff;
+
+    box-shadow: 0 6px 10px -4px #00000026;
   }
 `;

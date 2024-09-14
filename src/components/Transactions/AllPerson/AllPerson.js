@@ -9,12 +9,12 @@ import {
 import ActionContextMenu from './ActionContextMenu';
 import Avatar from '@mui/material/Avatar';
 import {
+  StyledButton,
+  StyledButtonGroup,
   StyledContentWrapper,
   StyledUserIcon,
 } from '../../../styled/GlobalStyled';
 import Dialog from '../../Dialog/Dialog';
-import { ButtonGroup } from '@mui/material';
-import Button from '@mui/material/Button';
 import { renderField } from '../../../common/utils';
 import { alertActions } from '../../../store/slices/alertSlice';
 import { apiResponseStatus } from '../../../config/apiConfig';
@@ -116,10 +116,10 @@ const AllPerson = ({ allPersons = [] }) => {
   };
   const dialogActions = () => {
     return (
-      <ButtonGroup>
-        <Button onClick={handleOnCancel}>Cancel</Button>
-        <Button onClick={handleOnSubmit}>Submit</Button>
-      </ButtonGroup>
+      <StyledButtonGroup>
+        <StyledButton onClick={handleOnCancel}>Cancel</StyledButton>
+        <StyledButton onClick={handleOnSubmit}>Submit</StyledButton>
+      </StyledButtonGroup>
     );
   };
 

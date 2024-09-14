@@ -1,4 +1,4 @@
-import { call, all, spawn, fork } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
 import expenseSaga from './expenseSaga';
 import categorySaga from './categorySaga';
 import personSaga from './personSaga';

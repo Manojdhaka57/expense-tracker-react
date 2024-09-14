@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
   );
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const tokenValidation = async (refreshToken, accessToken) => {
+  const tokenValidation = async (refreshToken = '', accessToken = '') => {
     localStorage.setItem(LOCAL_STORAGE_OBJECT.REFRESH_TOKEN, refreshToken);
     localStorage.setItem(LOCAL_STORAGE_OBJECT.ACCESS_TOKEN, accessToken);
     const decodedToken = await decodeToken(accessToken);

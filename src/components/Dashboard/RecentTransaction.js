@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   StyledCard,
+  StyledChip,
   StyledRupeeIcon,
   StyledTitle,
   cardAnimation,
@@ -95,6 +96,7 @@ const RecentTransaction = () => {
           <StyledExpenseTitle className='subTitle'>
             {formatDate(expense?.date)}
           </StyledExpenseTitle>
+          <StyledChip label={expense?.category} color='success' />
         </StyledDiv>
         <StyledDiv className='expense-amount'>
           <StyledRupeeIcon />

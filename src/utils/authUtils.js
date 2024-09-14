@@ -15,6 +15,6 @@ export const clearLocalStorage = () => {
   localStorage.removeItem(LOCAL_STORAGE_OBJECT.EXP);
 };
 
-export const decodeToken = (token) => {
+export const decodeToken = (token = '') => {
   return jwtDecode(token);
 };

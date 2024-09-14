@@ -11,13 +11,14 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import ActionContextMenu from './ActionContextMenu';
 import {
+  StyledButton,
+  StyledButtonGroup,
   StyledExpenseIcon,
   StyledIncomeIcon,
   StyledRupeeIcon,
 } from '../../../styled/GlobalStyled';
 import { formatDate } from '../../../utils';
 import DialogBox from '../../Dialog/Dialog';
-import { Button, ButtonGroup } from '@mui/material';
 import { renderField } from '../../../common/utils';
 import { transactionTypes } from './constents';
 import { DATE_FORMAT, REGEXP } from '../../../config/appConfig';
@@ -124,10 +125,10 @@ const TransactionHistory = () => {
 
   const dialogActions = () => {
     return (
-      <ButtonGroup>
-        <Button onClick={handleOnCancel}>Cancel</Button>
-        <Button onClick={handleOnSubmit}>Submit</Button>
-      </ButtonGroup>
+      <StyledButtonGroup>
+        <StyledButton onClick={handleOnCancel}>Cancel</StyledButton>
+        <StyledButton onClick={handleOnSubmit}>Submit</StyledButton>
+      </StyledButtonGroup>
     );
   };
   const renderTransaction = (transaction) => {

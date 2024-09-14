@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { StyledContentWrapper } from '../../styled/GlobalStyled';
-import { useDispatch } from 'react-redux';
+import {
+  StyledButton,
+  StyledButtonGroup,
+  StyledContentWrapper,
+} from '../../styled/GlobalStyled';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   getAllExpenses,
   getCategoryWiseExpense,
@@ -16,10 +20,9 @@ import { renderField } from '../../common/utils';
 import styled from 'styled-components';
 import { Icons } from '../../Icons/icons';
 import { StyledFilterButton } from './Dashboard.stylded';
-import { endOfMonth, format, startOfDay, startOfMonth } from 'date-fns';
+import { endOfMonth, format, startOfMonth } from 'date-fns';
 import DialogBox from '../../components/Dialog/Dialog';
-import { Button, ButtonGroup } from '@mui/material';
-import { filter, find } from 'lodash';
+import { find } from 'lodash';
 
 const StyledFilterField = styled.div``;
 const Dashboard = () => {
@@ -31,6 +34,8 @@ const Dashboard = () => {
   });
 
   const [selectedFilters, setSelectedFilters] = useState({});
+
+  const { pagination } = useSelector((state) => state.expenses);
 
   useEffect(() => {
     emit({
@@ -49,6 +54,13 @@ const Dashboard = () => {
     dispatch(getExpensesSummary(filterData));
     dispatch(getCategoryWiseExpense(filterData));
   }, [filterData]);
+
+  const handleLoadMore = () => {
+    setFilterData((prevState) => ({
+      ...prevState,
+      size: prevState?.size ? prevState.size + 10 : 20,
+    }));
+  };
 
   const handleOnChange = (event) => {
     const { name, value } = event.target;
@@ -113,11 +125,11 @@ const Dashboard = () => {
 
   const dialogActions = () => {
     return (
-      <ButtonGroup>
-        <Button onClick={handleOnCancel}>Cancel</Button>
-        <Button onClick={handleOnClearAll}>Clear All</Button>
-        <Button onClick={handleOnSubmit}>Submit</Button>
-      </ButtonGroup>
+      <StyledButtonGroup>
+        <StyledButton onClick={handleOnCancel}>Cancel</StyledButton>
+        <StyledButton onClick={handleOnClearAll}>Clear All</StyledButton>
+        <StyledButton onClick={handleOnSubmit}>Submit</StyledButton>
+      </StyledButtonGroup>
     );
   };
   return (
@@ -125,6 +137,12 @@ const Dashboard = () => {
       <History />
       <CategoryWiseExpense />
       <RecentTransaction />
+      {pagination?.totalRecords &&
+        pagination?.totalRecords > pagination?.size && (
+          <StyledButton onClick={handleLoadMore}>
+            Loading More .....
+          </StyledButton>
+        )}
       {!open && (
         <StyledFilterButton onClick={handleOnFilterClick}>
           <Icons.FilterIcon />

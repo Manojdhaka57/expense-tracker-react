@@ -4,7 +4,7 @@ export const StyledFilterButton = styled.div`
   position: fixed;
   right: 24px;
   bottom: 60px;
-  z-index: 99999;
+  z-index: 99;
   cursor: pointer;
   svg {
     width: 38px;
