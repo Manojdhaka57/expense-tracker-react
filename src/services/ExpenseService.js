@@ -27,5 +27,13 @@ class ExpenseService {
     );
     return response;
   }
+
+  async getDayWiseExpense(payload) {
+    const response = await HttpClient.post(
+      API_ENDPOINT.GET_DAY_WISE_EXPENSE,
+      payload
+    );
+    return response;
+  }
 }
 export default new ExpenseService();

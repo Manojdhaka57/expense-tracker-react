@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   getAllExpenses,
   getCategoryWiseExpense,
+  getDayWiseExpense,
   getExpensesSummary,
 } from '../../actions/expenseActions';
 import History from '../../components/Dashboard/History';
@@ -23,6 +24,7 @@ import { StyledFilterButton } from './Dashboard.stylded';
 import { endOfMonth, format, startOfMonth } from 'date-fns';
 import DialogBox from '../../components/Dialog/Dialog';
 import { find } from 'lodash';
+import DayWiseExpense from '../../components/Dashboard/DayWiseExpense';
 
 const StyledFilterField = styled.div``;
 const Dashboard = () => {
@@ -54,6 +56,18 @@ const Dashboard = () => {
     dispatch(getExpensesSummary(filterData));
     dispatch(getCategoryWiseExpense(filterData));
   }, [filterData]);
+
+  useEffect(() => {
+    dispatch(
+      getDayWiseExpense({
+        fromDate: format(
+          startOfMonth(new Date()),
+          "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        ),
+        endDate: format(endOfMonth(new Date()), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"),
+      })
+    );
+  }, []);
 
   const handleLoadMore = () => {
     setFilterData((prevState) => ({
@@ -132,17 +146,18 @@ const Dashboard = () => {
       </StyledButtonGroup>
     );
   };
+
+  const showTransactionList =
+    pagination?.totalRecords && pagination?.totalRecords > pagination?.size;
   return (
     <StyledContentWrapper>
       <History />
       <CategoryWiseExpense />
+      <DayWiseExpense />
       <RecentTransaction />
-      {pagination?.totalRecords &&
-        pagination?.totalRecords > pagination?.size && (
-          <StyledButton onClick={handleLoadMore}>
-            Loading More .....
-          </StyledButton>
-        )}
+      {showTransactionList ? (
+        <StyledButton onClick={handleLoadMore}>Loading More .....</StyledButton>
+      ) : null}
       {!open && (
         <StyledFilterButton onClick={handleOnFilterClick}>
           <Icons.FilterIcon />

@@ -135,6 +135,32 @@ export function* getCategoryWiseExpenseHandler(action) {
   }
 }
 
+export function* getDayWiseExpenseHandler(action) {
+  try {
+    yield put(loaderActions.showLoader());
+    const response = yield call(
+      ExpenseService.getDayWiseExpense,
+      action.payload
+    );
+    if (response.data.statusCode === 200) {
+      yield put(expenseActions.updateDayWiseExpenses(response.data?.data));
+    } else {
+      yield put(expenseActions.updateDayWiseExpenses([]));
+    }
+  } catch (error) {
+    yield put(
+      alertActions.showAlert({
+        show: true,
+        type: apiResponseStatus.ERROR,
+        message: error.response?.data?.message || '',
+        messageId: 'something went wrong please try again',
+      })
+    );
+  } finally {
+    yield put(loaderActions.hideLoader());
+  }
+}
+
 export default function* expenseSaga() {
   yield takeLatest(expenseActionTypes.GET_ALL_EXPENSES, getAllExpensesHandler);
   yield takeLatest(
@@ -145,5 +171,9 @@ export default function* expenseSaga() {
   yield takeLatest(
     expenseActionTypes.GET_CATEGORY_WISE_EXPENSE,
     getCategoryWiseExpenseHandler
+  );
+  yield takeLatest(
+    expenseActionTypes.GET_DAY_WISE_EXPENSE,
+    getDayWiseExpenseHandler
   );
 }

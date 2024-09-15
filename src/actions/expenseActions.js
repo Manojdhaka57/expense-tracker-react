@@ -19,3 +19,8 @@ export const getCategoryWiseExpense = (payload) => ({
   type: expenseActionTypes.GET_CATEGORY_WISE_EXPENSE,
   payload,
 });
+
+export const getDayWiseExpense = (payload) => ({
+  type: expenseActionTypes.GET_DAY_WISE_EXPENSE,
+  payload,
+});

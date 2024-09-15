@@ -6,6 +6,7 @@ const expenseSlice = createSlice({
     expenses: [],
     expensesSummary: [],
     categoryWiseExpense: [],
+    dayWiseExpense: [],
     monthWiseExpenses: [],
     pagination: {
       page: 0,
@@ -22,6 +23,9 @@ const expenseSlice = createSlice({
     },
     setCategoryWiseExpenses: (state, action) => {
       state.categoryWiseExpense = action.payload;
+    },
+    updateDayWiseExpenses: (state, action) => {
+      state.dayWiseExpense = action.payload;
     },
     setMonthWiseExpenses: (state, action) => {
       state.monthWiseExpenses = action.payload;
@@ -40,4 +44,5 @@ export const expenseActionTypes = {
   GET_EXPENSES_SUMMARY: 'expense/GET_EXPENSES_SUMMARY',
   ADD_EXPENSE: 'expense/ADD_EXPENSE',
   GET_CATEGORY_WISE_EXPENSE: 'expense/GET_CATEGORY_WISE_EXPENSE',
+  GET_DAY_WISE_EXPENSE: 'expense/GET_DAY_WISE_EXPENSE',
 };
