@@ -87,4 +87,7 @@ export const StyledContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 20px 20px 0px 0px;
 `;

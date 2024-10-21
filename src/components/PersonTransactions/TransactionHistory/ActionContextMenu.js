@@ -40,7 +40,7 @@ const ActionContextMenu = ({ onClick, item, actions }) => {
           {Object.keys(actions).map((key) => {
             return (
               <StyledMenuItem
-                data-action={key}
+                data-action={actions[key]}
                 key={`${item._id}-${key}`}
                 onClick={handleOnActionClick}
                 data-transaction-id={item._id}

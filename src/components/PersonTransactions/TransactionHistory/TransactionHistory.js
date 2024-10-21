@@ -50,10 +50,10 @@ const TransactionHistory = () => {
   };
 
   useEffect(() => {
-    if (selectedAction !== 'DELETE' && selectedTransactionId) {
+    if (selectedAction !== actions.DELETE && selectedTransactionId) {
       dispatch(getTransactionDetails({ transactionId: selectedTransactionId }));
     }
-  }, [selectedTransactionId]);
+  }, [selectedTransactionId, selectedAction]);
 
   useEffect(() => {
     setFormData(transactionDetails);
@@ -76,10 +76,10 @@ const TransactionHistory = () => {
 
   const handleOnAddClick = () => {
     setOpen(true);
-    setSelectedAction('ADD');
+    setSelectedAction('Add');
   };
   const handleOnSubmit = () => {
-    if (selectedAction === 'EDIT' || selectedAction === 'ADD') {
+    if (selectedAction === 'Edit' || selectedAction === 'Add') {
       const { date, amount, transactionType, description } = formData;
       if (
         [date, amount?.toString(), transactionType].every(
@@ -94,10 +94,10 @@ const TransactionHistory = () => {
           description,
           personId,
         };
-        if (selectedAction === 'EDIT') {
+        if (selectedAction === 'Edit') {
           transactionPayload.transactionId = selectedTransactionId;
           dispatch(editTransaction(transactionPayload));
-        } else if (selectedAction === 'ADD') {
+        } else if (selectedAction === 'Add') {
           dispatch(addTransaction(transactionPayload));
         }
         setOpen(false);
@@ -113,7 +113,7 @@ const TransactionHistory = () => {
           })
         );
       }
-    } else if (selectedAction === 'DELETE') {
+    } else if (selectedAction === actions.DELETE) {
       dispatch(
         deleteTransaction({ transactionId: selectedTransactionId, personId })
       );
@@ -257,7 +257,21 @@ const TransactionHistory = () => {
     );
   };
   const deleteFormContent = () => {
-    return 'Are you sure you want to delete this person';
+    return (
+      <StyledContentWrapper
+        style={{
+          height: '200px',
+          color: 'red',
+          fontSize: '24px',
+          fontWeight: 'bold',
+          justifyContent: 'center',
+          borderRadius: '20px',
+          border: '2px solid red',
+        }}
+      >
+        Are you sure you want to delete this person
+      </StyledContentWrapper>
+    );
   };
   return (
     <StyledContentDiv>
@@ -278,11 +292,18 @@ const TransactionHistory = () => {
           setOpen={setOpen}
           title={`${selectedAction} transaction`}
           actions={dialogActions}
+          selectedAction={selectedAction}
         >
-          <>
-            {['EDIT', 'ADD'].includes(selectedAction) && editFormContent()}
-            {selectedAction === 'DELETE' && deleteFormContent()}
-          </>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              overflow: 'auto',
+            }}
+          >
+            {['Edit', 'Add'].includes(selectedAction) && editFormContent()}
+            {selectedAction === actions.DELETE && deleteFormContent()}
+          </div>
         </DialogBox>
       )}
     </StyledContentDiv>
